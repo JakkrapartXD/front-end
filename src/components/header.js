@@ -8,7 +8,7 @@ export function getnumberOfMovies() {
 }
 export const Header = ({ onInsertClick, onSearch, numberOfMovies }) => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary fixed-top">
+    <Navbar expand="lg" className="bg-body-tertiary fixed-top bg-light">
       <Container fluid>
         <Navbar.Brand href="">Movies Search </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -18,8 +18,9 @@ export const Header = ({ onInsertClick, onSearch, numberOfMovies }) => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link onClick={onInsertClick}>Insert</Nav.Link>
+            <Nav.Link className="me-auto my-2 my-lg-0" onClick={onInsertClick}>Insert</Nav.Link>
           </Nav>
+          <Nav className="ml-auto">
           <Form className="d-flex">
             <Nav.Link disabled>
               Number of Movies: {numberOfMovies} &nbsp;
@@ -34,6 +35,7 @@ export const Header = ({ onInsertClick, onSearch, numberOfMovies }) => {
               onChange={(e) => onSearch(e)}
             />
           </Form>
+          </Nav> 
         </Navbar.Collapse>
       </Container>
     </Navbar>
