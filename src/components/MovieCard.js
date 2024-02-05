@@ -14,8 +14,8 @@ const MovieCard = (props) => {
       <div className="card-body">
         <h5 className="card-title">{props.title}</h5>
         <p className="card-text">{props.genre}</p>
-        <p className="card-text">{props.director}</p>
-        <p className="card-text float-end">{props.release_year}</p>
+        <span className="card-text">{props.director}</span>
+        <p className="card-text float-right">{props.release_year}</p>
       </div>
     </div>
   );
