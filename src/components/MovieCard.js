@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../css/moviecard.css";
+import { fetchImageWithToken } from "../service/apiUtils";
+
 
 const MovieCard = (props) => {
-  const API_IMG = "https://api.se-rmutl.net/api/images/";
+  const [imageBlob, setImageBlob] = useState(null);
+
+  useEffect(() => {
+    const imagePath = props.Image_name;
+    
+    fetchImageWithToken(imagePath)
+      .then(blob => setImageBlob(blob))
+      .catch(error => console.error(error));
+  }, [props.Image_name]);
+
 
   return (
     <div className="card movie_card">
-      <img
-        src={API_IMG + props.Image_name}
-        alt={`Movie poster for ${props.title}`}
-        className="card-img-top"
-      />
+      {imageBlob && (
+        <img
+          src={URL.createObjectURL(imageBlob)}
+          alt={`Movie poster for ${props.title}`}
+          className="card-img-top"
+        />
+      )}
       <div className="card-body">
         <h5 className="card-title">{props.title}</h5>
         <p className="card-text">{props.genre}</p>
