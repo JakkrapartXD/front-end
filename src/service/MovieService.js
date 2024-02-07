@@ -35,8 +35,9 @@ export async function searchMovie(search_text) {
     `https://api.se-rmutl.net/api/movie/search?search_text=${search_text}`,
     {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
-      Authorization: `Bearer ${bearerToken}`,
+      headers: { "Content-Type": "application/json" ,
+      Authorization: `Bearer ${bearerToken}`,},
+      
     }
   );
   return await response.json();
