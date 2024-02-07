@@ -1,6 +1,11 @@
+const bearerToken = '1234567890';
 export async function getAllMovies() {
   try {
-    const response = await fetch("https://api.se-rmutl.net/api/movie/all");
+    const response = await fetch("https://api.se-rmutl.net/api/movie/all", {
+      headers: {
+        Authorization: `Bearer ${bearerToken}`,
+      },
+    });
     return await response.json();
   } catch (error) {
     return [];
@@ -18,6 +23,9 @@ export async function createMovie(data) {
   const response = await fetch(`https://api.se-rmutl.net/api/movie/insert`, {
     method: "POST",
     body: formData,
+    headers: {
+      Authorization: `Bearer ${bearerToken}`,
+    },
   });
 
   return await response.json();
@@ -29,6 +37,7 @@ export async function searchMovie(search_text) {
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },
+      Authorization: `Bearer ${bearerToken}`,
     }
   );
   return await response.json();
