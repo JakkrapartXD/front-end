@@ -1,6 +1,6 @@
 export async function getAllMovies() {
   try {
-    const response = await fetch("http://api.se-rmutl.net/api/movie/all");
+    const response = await fetch("https://api.se-rmutl.net/api/movie/all");
     return await response.json();
   } catch (error) {
     return [];
@@ -15,7 +15,7 @@ export async function createMovie(data) {
   formData.append("release_year", data.releaseYear);
   formData.append("Image_name", data.image); 
   console.log(formData);
-  const response = await fetch(`http://api.se-rmutl.net/api/movie/insert`, {
+  const response = await fetch(`https://api.se-rmutl.net/api/movie/insert`, {
     method: "POST",
     body: formData,
   });
@@ -25,7 +25,7 @@ export async function createMovie(data) {
 
 export async function searchMovie(search_text) {
   const response = await fetch(
-    `http://api.se-rmutl.net/api/movie/search?search_text=${search_text}`,
+    `https://api.se-rmutl.net/api/movie/search?search_text=${search_text}`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },

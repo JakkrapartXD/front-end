@@ -2,7 +2,7 @@ import React from "react";
 import "../css/moviecard.css";
 
 const MovieCard = (props) => {
-  const API_IMG = "http://api.se-rmutl.net/api/images/";
+  const API_IMG = "https://api.se-rmutl.net/api/images/";
 
   return (
     <div className="card movie_card">
