@@ -5,8 +5,10 @@ import { getAllMovies, createMovie, searchMovie } from "./service/MovieService";
 import "./App.css";
 import MovieCard from "./components/MovieCard";
 import MovieFormModal from "./components/MovieForm";
+import  secureLocalStorage  from  "react-secure-storage";
 
 function App() {
+  secureLocalStorage.setItem('bearerToken',"1234567890");
   /* Modal */
   const [showModal, setShowModal] = useState(false);
 

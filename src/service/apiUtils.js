@@ -1,6 +1,7 @@
+import  secureLocalStorage  from  "react-secure-storage";
 export const fetchImageWithToken = (imagePath) => {
     const API_IMG = "https://api.se-rmutl.net/api/images/";
-    const bearerToken = '1234567890';
+    const bearerToken = secureLocalStorage.getItem('bearerToken');
   
     const headers = {
       Authorization: `Bearer ${bearerToken}`,

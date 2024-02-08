@@ -1,4 +1,5 @@
-const bearerToken = '1234567890';
+import  secureLocalStorage  from  "react-secure-storage";
+const bearerToken = secureLocalStorage.getItem('bearerToken');
 export async function getAllMovies() {
   try {
     const response = await fetch("https://api.se-rmutl.net/api/movie/all", {
