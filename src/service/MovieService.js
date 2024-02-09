@@ -1,8 +1,10 @@
-import  secureLocalStorage  from  "react-secure-storage";
-const bearerToken = secureLocalStorage.getItem('bearerToken');
+const env = require('./env.js')
+const config = require('./apiConfig.js')[env];
+const bearerToken = config.bearer_token;
 export async function getAllMovies() {
   try {
-    const response = await fetch("https://api.se-rmutl.net/api/movie/all", {
+    console.log(config.API_URL);
+    const response = await fetch(`${config.API_URL}/api/movie/all`, {
       headers: {Authorization: `Bearer ${bearerToken}`,
       },
     });
@@ -20,7 +22,7 @@ export async function createMovie(data) {
   formData.append("release_year", data.releaseYear);
   formData.append("Image_name", data.image); 
   console.log(formData);
-  const response = await fetch(`https://api.se-rmutl.net/api/movie/insert`, {
+  const response = await fetch(`${config.API_URL}/api/movie/insert`, {
     method: "POST",
     body: formData,
     headers: {
@@ -33,7 +35,7 @@ export async function createMovie(data) {
 
 export async function searchMovie(search_text) {
   const response = await fetch(
-    `https://api.se-rmutl.net/api/movie/search?search_text=${search_text}`,
+    `${config.API_URL}/api/movie/search?search_text=${search_text}`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" ,
